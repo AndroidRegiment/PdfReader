@@ -1,7 +1,7 @@
-package com.xtremedevx.pdfreader.repository
+package com.xtremedevx.pdfreader.data.repository
 
 import android.content.Context
-import com.xtremedevx.pdfreader.model.Pdf
+import com.xtremedevx.pdfreader.data.model.Pdf
 
 interface MyRepository {
      fun getAllDocumentFromStorage(context: Context): List<Pdf>

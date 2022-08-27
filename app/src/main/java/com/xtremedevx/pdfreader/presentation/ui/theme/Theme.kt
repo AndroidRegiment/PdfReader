@@ -1,4 +1,4 @@
-package com.xtremedevx.pdfreader.ui.theme
+package com.xtremedevx.pdfreader.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

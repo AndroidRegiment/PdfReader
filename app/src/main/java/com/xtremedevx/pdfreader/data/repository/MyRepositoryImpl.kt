@@ -1,4 +1,4 @@
-package com.xtremedevx.pdfreader.repository
+package com.xtremedevx.pdfreader.data.repository
 
 import android.content.Context
 import android.database.Cursor
@@ -6,7 +6,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import android.webkit.MimeTypeMap
-import com.xtremedevx.pdfreader.model.Pdf
+import com.xtremedevx.pdfreader.data.model.Pdf
 
 class MyRepositoryImpl : MyRepository {
 
@@ -19,6 +19,7 @@ class MyRepositoryImpl : MyRepository {
         val projection = arrayOf(
             MediaStore.Files.FileColumns.TITLE,
             MediaStore.Files.FileColumns.SIZE,
+            MediaStore.Files.FileColumns.DATE_MODIFIED,
             MediaStore.Files.FileColumns.DATA,
         )
 
@@ -38,7 +39,8 @@ class MyRepositoryImpl : MyRepository {
         if (cursor != null) {
             val titleCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.TITLE)
             val sizeCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE)
-            val dataCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA)
+            val uriCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA)
+            val dateCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_MODIFIED)
 
 
             if (cursor.moveToFirst()) {
@@ -46,16 +48,18 @@ class MyRepositoryImpl : MyRepository {
                 do {
                     val fileUri: Uri = Uri.withAppendedPath(
                         MediaStore.Files.getContentUri("external"),
-                        cursor.getString(dataCol)
+                        cursor.getString(uriCol)
                     )
                     val title = cursor.getString(titleCol)
                     val size = cursor.getLong(sizeCol)
+                    val date = cursor.getString(dateCol)
 
                     pdfList.add(
                         Pdf(
                             fileTitle = title,
                             fileUri = fileUri.toString(),
-                            size = size
+                            size = size,
+                            date = date
                         )
                     )
 
