@@ -2,6 +2,7 @@ package com.xtremedevx.pdfreader.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
@@ -12,7 +13,7 @@ sealed class BottomBarScreen(
     val title: String,
     val OutlinedIcon: ImageVector,
     val FilledIcon: ImageVector,
-    ) {
+) {
 
     object HomeScreen : BottomBarScreen(
         route = "home_screen",
@@ -23,9 +24,9 @@ sealed class BottomBarScreen(
 
     object FavoriteScreen : BottomBarScreen(
         route = "favorite_screen",
-        title = "Home",
-        OutlinedIcon = Icons.Outlined.Favorite,
-        FilledIcon = Icons.Filled.Favorite,
+        title = "Favorite",
+        OutlinedIcon = Icons.Default.FavoriteBorder,
+        FilledIcon = Icons.Default.FavoriteBorder,
     )
 
 }
