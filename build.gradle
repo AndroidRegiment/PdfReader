@@ -6,7 +6,6 @@ buildscript {
         lifecycle_version = '2.5.0'
         accompanist_version = '0.25.1'
         composeNavigationVersion = '2.5.0-rc01'
-
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"

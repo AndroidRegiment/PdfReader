@@ -47,27 +47,7 @@ fun HomeScreen() {
 
 @Composable
 fun ShowHomeScreenContent() {
-    val context = LocalContext.current
-    val repo = MyRepositoryImpl()
-    val list = repo.getAllDocumentFromStorage(context)
-
-    if (list.isEmpty()) {
-        ImageMessage(
-            id = R.drawable.no_item_found,
-            title = "Didn't find any file,\nget some online"
-        )
-    } else {
-
-        LazyColumn(
-            contentPadding = PaddingValues(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            items(list) { pdf ->
-                PdfItem(pdf = pdf)
-            }
-
-        }
-    }
+    //TODO : Show Pdf here
 }
 
 @OptIn(ExperimentalPermissionsApi::class)

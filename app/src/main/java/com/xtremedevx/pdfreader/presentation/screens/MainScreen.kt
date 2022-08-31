@@ -7,22 +7,23 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.xtremedevx.pdfreader.data.model.Pdf
 import com.xtremedevx.pdfreader.navigation.BottomBar
 import com.xtremedevx.pdfreader.navigation.BottomNavGraph
 
 @Composable
 fun MainScreen(
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     Scaffold(modifier = Modifier.fillMaxSize(),
-    bottomBar = { BottomBar(navController = navController)}
-        ) { paddingValues ->
+        bottomBar = { BottomBar(navController = navController) }
+    ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-                BottomNavGraph(navController = navController)
+            BottomNavGraph(navController = navController)
         }
     }
 }

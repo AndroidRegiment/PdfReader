@@ -1,16 +1,15 @@
 package com.xtremedevx.pdfreader.data.repository
 
-import android.content.Context
+import android.app.Application
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import android.webkit.MimeTypeMap
 import com.xtremedevx.pdfreader.data.model.Pdf
 
-class MyRepositoryImpl : MyRepository {
+class MyRepositoryImpl(private val context: Application) : MyRepository {
 
-    override fun getAllDocumentFromStorage(context: Context): List<Pdf> {
+    override suspend fun getAllDocumentFromStorage(){
 
         val pdfList = mutableListOf<Pdf>()
 
@@ -35,16 +34,12 @@ class MyRepositoryImpl : MyRepository {
             selectionArgs,
             null
         )
-
         if (cursor != null) {
             val titleCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.TITLE)
             val sizeCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE)
             val uriCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA)
             val dateCol = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_MODIFIED)
-
-
             if (cursor.moveToFirst()) {
-                Log.i("TEST", "Cursor move first")
                 do {
                     val fileUri: Uri = Uri.withAppendedPath(
                         MediaStore.Files.getContentUri("external"),
@@ -62,16 +57,9 @@ class MyRepositoryImpl : MyRepository {
                             date = date
                         )
                     )
-
                 } while (cursor.moveToNext())
             }
             cursor.close()
         }
-
-        return pdfList
     }
-
-
 }
-
-

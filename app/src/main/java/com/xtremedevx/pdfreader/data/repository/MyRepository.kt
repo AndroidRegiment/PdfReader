@@ -4,7 +4,7 @@ import android.content.Context
 import com.xtremedevx.pdfreader.data.model.Pdf
 
 interface MyRepository {
-     fun getAllDocumentFromStorage(context: Context): List<Pdf>
+     suspend fun getAllDocumentFromStorage()
 
 //    suspend fun getAllFavoriteDocument() : List<String>
 //

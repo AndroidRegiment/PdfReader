@@ -8,8 +8,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -73,9 +71,9 @@ fun PrevPdf() {
     PdfItem(
         pdf = Pdf(
             fileTitle = "This is My Pdf",
-            fileUri = "fileuri/path",
-            size = 10003,
-            date = "22/4/22"
+            fileUri = "/inYourBackPocket",
+            size = 90_000,
+            date = "22/2/22"
         )
     )
 }
